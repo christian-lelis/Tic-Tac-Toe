@@ -1,0 +1,54 @@
+/* 1024-1199 */
+@media(max-width:74.99rem){
+    .win-msg h1{
+        font-size: 10rem;
+    }
+    #win-btn {
+        padding: 1.5rem 6rem;
+        font-size: 3rem;
+    }
+} 
+/* 768 - 1023 */
+
+/* 480 - 767 */
+@media(max-width:47.99rem){
+    .win-msg h1{
+        font-size: 6rem;
+    }
+    #win-btn {
+        padding: 1rem 4rem;
+        font-size: 3rem;
+    }
+} 
+/* 0 - 479 */
+@media(max-width:29.99rem){
+    .cell{
+        width: 7rem;
+        height: 7rem;
+    }
+    .cell.x::before,
+    .cell.x::after,
+    .board.x .cell:not(.x):not(.ball):hover::after,
+    .board.x .cell:not(.x):not(.ball):hover::before{
+        height: calc(7rem * 0.15);
+        width: calc(7rem * .9);
+    }
+
+    .cell.ball::before,
+    .board.ball .cell:not(.ball):not(.x):hover::before{
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 50%;
+        border: 1.2rem solid var(--gold);
+    }
+
+    .win-msg h1{
+        font-size: 5rem;
+    }
+
+    #win-btn {
+        padding: 1rem 3rem;
+        font-size: 3rem;
+    }
+
+} 

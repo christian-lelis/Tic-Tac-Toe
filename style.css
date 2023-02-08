@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@100;300;400;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Itim',cursive;
+}
+:root{
+    --darkGreen:#026730;
+    --green: #04d361;
+    --purple: #633bbc;
+    --black: #141414;
+    --dark: #09090a;
+    --gold: #ffd700;
+    --liteGold: #fdf3b9;
+    --white: #fff;
+    
+}
+body{
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    color: var(--green);
+    background: linear-gradient(to bottom, var(--dark),var(--black), var(--dark));
+    height: 100vh;
+    width: 100vw;
+    cursor: cell;
+}
+
+.board{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell{
+    width: 9rem;
+    height: 9rem;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell:nth-child(1),
+:nth-child(2),
+:nth-child(3){
+    border-top:none
+}
+
+.cell:nth-child(1),
+:nth-child(4),
+:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(7),
+:nth-child(8),
+:nth-child(9){
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+:nth-child(6),
+:nth-child(9){
+    border-right: none;
+}
+
+/* -------------X--------------- */
+
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.ball):hover::after,
+.board.x .cell:not(.x):not(.ball):hover::before{
+    content: "";
+    height: calc(9rem * 0.15);
+    width: calc(9rem * .9);
+    background:var(--gold) ;
+    position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.ball):hover::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.ball):hover::after{
+    transform: rotate(-45deg)
+}
+/* -- ver a necessidade de um importante nesse background */
+.board.x .cell:not(.x):not(.ball):hover::before,
+.board.x .cell:not(.x):not(.ball):hover::after{
+    background-color: var(--liteGold);
+}
+
+/* -------------Circle--------------- */
+
+.cell.ball::before,
+.board.ball .cell:not(.ball):not(.x):hover::before{
+    content: '';
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    border: 1.4rem solid var(--gold);
+}
+
+.board.ball .cell:not(.ball):not(.x):hover::before{
+    border:1.4rem solid var(--liteGold);
+}
+.cell.x,.cell.ball {
+    cursor: not-allowed;
+}
+
+.win-msg{
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    cursor:default;
+    gap:5rem;
+    padding-bottom: 5rem;
+}
+#win-btn {
+    padding: 1.5rem 6rem;
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 600;
+    background-color: var(--darkGreen);
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: 0rem 0rem 2rem -.5rem rgb(0, 0, 0);
+    transition: .25s ease-in;
+}
+#win-btn:hover{
+    cursor: pointer;
+    background: var(--green);
+    color: var(--white);
+}
+.win-msg h1{
+    font-size: 15rem;
+}
+.winning-msg{
+    display: flex;
+}
