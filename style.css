@@ -76,7 +76,6 @@ body{
 
 /* -------------X--------------- */
 
-
 .cell.x::before,
 .cell.x::after,
 .board.x .cell:not(.x):not(.ball):hover::after,
