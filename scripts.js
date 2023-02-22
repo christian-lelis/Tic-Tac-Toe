@@ -3,6 +3,7 @@ const board = document.querySelector("[data-board]");
 const endGameMsg = document.querySelector("[data-end-msg]");
 const winMsg = document.querySelector("[data-win]");
 const resetBtn = document.getElementById("win-btn")
+const main = document.getElementById("main");
 let isBall;
 
 const winCombination = [
@@ -27,6 +28,7 @@ const startGame = () =>{
 
     isBall= false;
     board.classList.add('x');
+    main.classList.remove("blur")
     winMsg.classList.remove ('winning-msg');
 }
 // --------------------------------------------------------------
@@ -38,6 +40,7 @@ if(isDraw){
     endGameMsg.innerText = isBall ? "O venceu!" : "X venceu!"
 }
     winMsg.classList.add("winning-msg")
+    main.classList.add("blur");
 }
 
 const checkForWin = (currentPlayer) => {

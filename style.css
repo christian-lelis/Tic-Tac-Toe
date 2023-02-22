@@ -13,9 +13,13 @@
     --black: #141414;
     --dark: #09090a;
     --gold: #ffd700;
-    --liteGold: #fdf3b9;
+    --liteGold: #fcf2be;
     --white: #fff;
     
+}
+main{
+    filter: blur(0px);
+    transition: 0.9s ease-in-out;
 }
 body{
     background-color: var(--black);
@@ -27,7 +31,6 @@ body{
     width: 100vw;
     cursor: cell;
 }
-
 .board{
     display: grid;
     height: 100%;
@@ -78,23 +81,28 @@ body{
 
 .cell.x::before,
 .cell.x::after,
-.board.x .cell:not(.x):not(.ball):hover::after,
-.board.x .cell:not(.x):not(.ball):hover::before{
-    content: "";
-    height: calc(9rem * 0.15);
-    width: calc(9rem * .9);
-    background:var(--gold) ;
-    position: absolute;
+.board.x .cell:not(.x):not(.ball)::after,
+.board.x .cell:not(.x):not(.ball)::before{
+    transition: all .1s  ease-in;
+    background:var(--gold);
 }
 
 .cell.x::before,
 .board.x .cell:not(.x):not(.ball):hover::before{
+    content: "";
+    height: calc(9rem * 0.15);
+    width: calc(9rem * .9);
+    position: absolute;
     transform: rotate(45deg);
 }
 
 .cell.x::after,
 .board.x .cell:not(.x):not(.ball):hover::after{
-    transform: rotate(-45deg)
+    content: "";
+    height: calc(9rem * 0.15);
+    width: calc(9rem * .9);
+    position: absolute;
+    transform: rotate(-45deg);
 }
 /* -- ver a necessidade de um importante nesse background */
 .board.x .cell:not(.x):not(.ball):hover::before,
@@ -110,7 +118,8 @@ body{
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 50%;
-    border: 1.4rem solid var(--gold);
+    border: 1.4rem solid transparent;
+    transition: all .1s ease-in;
 }
 
 .board.ball .cell:not(.ball):not(.x):hover::before{
@@ -119,21 +128,24 @@ body{
 .cell.x,.cell.ball {
     cursor: not-allowed;
 }
-
+.cell.ball::before{
+    border-color: var(--gold);
+}
 .win-msg{
-    display: none;
+    visibility: hidden;
+    display: flex;
     position: fixed;
-    top:0;
+    top:130%;
     left: 0;
     right:0;
     bottom:0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(20px);
     cursor:default;
     gap:5rem;
     padding-bottom: 5rem;
+    transition: .9s ease-in-out ;
 }
 #win-btn {
     padding: 1.5rem 6rem;
@@ -155,5 +167,9 @@ body{
     font-size: 15rem;
 }
 .winning-msg{
-    display: flex;
+    visibility: visible;
+    top: 0;
+}
+.blur{
+    filter: blur(12px);
 }
